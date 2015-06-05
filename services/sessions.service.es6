@@ -48,8 +48,12 @@ class Sessions {
       .then(account => {
         this.sessions[name].setAccount(account);
       })
-      .catch(NotFoundError, e => {
-        this.sessions[name].setAccount(new Account(address));
+      .catch(e => {
+        if (e.name === 'NotFoundError') {
+          this.sessions[name].setAccount(new Account(address));
+        } else {
+          throw e;
+        }
       });
   }
 
