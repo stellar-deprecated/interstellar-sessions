@@ -1,7 +1,6 @@
 {
   "name": "interstellar-sessions",
   "version": "0.0.1",
-  "private": true,
   "description": "The interstellar-sessions module provides sessions support for IMS applications.",
   "keywords": [
     "stellar",
