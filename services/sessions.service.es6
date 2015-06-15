@@ -1,14 +1,15 @@
 import {SessionAlreadyDefinedError} from "../errors";
 import {SessionNotFoundError} from "../errors";
-import {Inject} from 'interstellar-core';
+import {Service, Inject} from 'interstellar-core';
 import {Session} from "../lib/session";
 import _ from 'lodash';
 import {Account, NotFoundError} from 'js-stellar-lib';
 
 const DEFAULT = 'default';
 
+@Service('Sessions')
 @Inject("$cookieStore", "interstellar-network.Server")
-class Sessions {
+export default class Sessions {
   constructor($cookieStore, Server) {
     this.$cookieStore = $cookieStore;
     this.Server = Server;
@@ -93,7 +94,3 @@ class Sessions {
     this.$cookieStore.put('sessions', permanentSessions);
   }
 }
-
-module.exports = function(mod) {
-  mod.service("Sessions", Sessions);
-};
