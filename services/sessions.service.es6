@@ -4,6 +4,7 @@ import {Service, Inject} from 'interstellar-core';
 import {Session} from "../lib/session";
 import _ from 'lodash';
 import {Account, NotFoundError} from 'js-stellar-lib';
+import moment from 'moment';
 
 const DEFAULT = 'default';
 
@@ -14,7 +15,7 @@ export default class Sessions {
     this.$cookieStore = $cookieStore;
     this.Server = Server;
     this.sessions = {};
-    _.forEach(this.$cookieStore.get('sessions'), (params, name) => this.create(name, params));
+    _.forEach(this.$cookieStore.get('sessions'), (params, name) => this.create(name, _.extend(params, {permanent: true})));
   }
 
   get default() {
@@ -40,7 +41,7 @@ export default class Sessions {
   }
 
   loadDefaultAccount() {
-    return loadAccount(DEFAULT);
+    return this.loadAccount(DEFAULT);
   }
 
   loadAccount(name) {
@@ -89,8 +90,8 @@ export default class Sessions {
       if (!session.isPermanent()) {
         return;
       }
-      permanentSessions[name] = _.pick(session, ['username', 'address', 'secret', 'data', 'permanent']);
+      permanentSessions[name] = _.pick(session, ['username', 'address', 'secret', 'data']);
     });
-    this.$cookieStore.put('sessions', permanentSessions);
+    this.$cookieStore.put('sessions', permanentSessions, {expires: moment().add(1, 'days').toDate()});
   }
 }
