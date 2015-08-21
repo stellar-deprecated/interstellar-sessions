@@ -32,3 +32,11 @@ None
 ## `interstellar-sessions.Sessions` service
 
 `interstellar-sessions.Sessions` servide provides helpful methods to create and manage sessions for your application users.
+
+## Publishing to npm
+```
+npm version [<newversion> | major | minor | patch | premajor | preminor | prepatch | prerelease]
+npm publish
+```
+npm >=2.13.0 required.
+Read more about [npm version](https://docs.npmjs.com/cli/version).
