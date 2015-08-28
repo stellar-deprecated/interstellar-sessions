@@ -1,7 +1,7 @@
 import { Session } from "../lib/session";
 import { NetworkConnection } from "../lib/network-connection";
 import { AddressSecretPair } from "../lib/address-secret-pair";
-import { Transaction } from "stellar-lib";
+import { Transaction } from "stellar-sdk";
 
 describe.only("Session", function() {
   dontUseAngularQ();

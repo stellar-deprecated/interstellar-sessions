@@ -3,7 +3,7 @@ import {SessionNotFoundError} from "../errors";
 import {Service, Inject} from 'interstellar-core';
 import {Session} from "../lib/session";
 import _ from 'lodash';
-import {Account, NotFoundError} from 'js-stellar-lib';
+import {Account, NotFoundError} from 'stellar-sdk';
 import moment from 'moment';
 
 const DEFAULT = 'default';

@@ -1,4 +1,4 @@
-import {Account, Server} from 'js-stellar-lib';
+import {Account, Server} from 'stellar-sdk';
 import {MismatchedAddressError} from '../errors';
 
 export class Session {
