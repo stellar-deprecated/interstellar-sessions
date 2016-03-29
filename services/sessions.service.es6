@@ -52,7 +52,7 @@ export default class Sessions {
       })
       .catch(e => {
         if (e.name === 'NotFoundError') {
-          this.sessions[name].setAccount(new Account(address));
+          this.sessions[name].setAccount(new Account(address, "0"));
         } else {
           throw e;
         }
